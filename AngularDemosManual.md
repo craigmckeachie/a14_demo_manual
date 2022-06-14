@@ -4,7 +4,7 @@
 
 <br /><br /><br /><br /><br />
 
-Copyright © 2021-2023
+Copyright © 2022-2024
 
 Funny Ant, LLC
 
@@ -176,8 +176,8 @@ It is **recommended that the instructor print a hard copy** of this demo manual 
 
 ### Getting Started
 
-1. Clone this repository: https://github.com/craigmckeachie/a12_demos
-2. Open `a12_demos` as the top level folder in your editor.
+1. Clone this repository: https://github.com/craigmckeachie/a14_demos
+2. Open `a14_demos` as the top level folder in your editor.
 3. Open a command-prompt or terminal in `a12_demos` and run the command.
 
 ```shell
@@ -2708,8 +2708,8 @@ https://ngrx.io/
    > WARNING: ngrx for Angular 14 has not been released so need to temporarily add @next to the following commands
 
    ```
-   ng add @ngrx/store
-   ng add @ngrx/store-devtools
+   ng add @ngrx/store@next
+   ng add @ngrx/store-devtools@next
    ```
 
    In more complex applications, you may also want to install the follow NgRx libraries but there is no need to run the below commands in this example.
@@ -2921,240 +2921,28 @@ Finished code available in `demos\ngrx-counter1`.
 
 <div style="page-break-after: always;"></div>
 
-### LEGACY: Redux (NgRx) Counter
-
-This is the same NgRx Counter example as the previous section. Use these directions that use an older, more verbose syntax (that is still supported) only if the client has an exisiting application where this style of sytax is more common and they want to understand it better.
-
-#### Setup
-
-```
-git checkout start -f
-```
-
-#### Installation
-
-Install @ngrx/schematics from npm:
-
-```
-npm install @ngrx/schematics@8 --save-dev
-```
-
-> NgRx Schematics helps you avoid writing common boilerplate and instead focus on building your application
-
-After installing @ngrx/schematics, install the NgRx dependencies.
-
-```
-npm install @ngrx/{store@8,effects@8,entity@8,store-devtools@8} --save
-```
-
-#### Store
-
-Generate the initial state management and register it within the app.module.ts
-
-```
-ng generate @ngrx/schematics:store State --root --module app.module.ts
-```
-
-> By adding the StoreModule.forRoot function in the imports array of your AppModule. The StoreModule.forRoot() method registers the global providers needed to access the Store throughout your application.
-
-<div style="page-break-after: always;"></div>
-
-#### Actions
-
-Generate a new file named `counter.actions.ts`
-
-```
-ng generate @ngrx/schematics:action Counter --flat
-```
-
-> The @ngrx/schematics command prefix is only needed when the default collection isn't set.
-
-Describe the counter actions to increment, decrement, and reset its value.
-
-```ts
-// src/app/counter.actions.ts
-// delete the generated code and replace with the code below
-
-import { Action } from "@ngrx/store";
-
-export enum ActionTypes {
-  Increment = "[Counter Component] Increment",
-  Decrement = "[Counter Component] Decrement",
-  Reset = "[Counter Component] Reset",
-}
-
-export class Increment implements Action {
-  readonly type = ActionTypes.Increment;
-}
-
-export class Decrement implements Action {
-  readonly type = ActionTypes.Decrement;
-}
-
-export class Reset implements Action {
-  readonly type = ActionTypes.Reset;
-}
-```
-
-<div style="page-break-after: always;"></div>
-
-#### Reducer
-
-Generate a reducer.
-
-```shell
-ng generate @ngrx/schematics:reducer Counter --flat --spec=false
-```
-
-Define a reducer function to handle changes in the counter value based on the provided actions.
-
-```ts
-// src/app/counter.reducer.ts
-// delete the generated code and replace with the code below
-
-import { Action } from "@ngrx/store";
-import { ActionTypes } from "./counter.actions";
-
-export const initialState = 0;
-
-export function counterReducer(state = initialState, action: Action) {
-  switch (action.type) {
-    case ActionTypes.Increment:
-      return state + 1;
-
-    case ActionTypes.Decrement:
-      return state - 1;
-
-    case ActionTypes.Reset:
-      return 0;
-
-    default:
-      return state;
-  }
-}
-```
-
-<div style="page-break-after: always;"></div>
-
-Add the count to the state interface and the reducers object and set the counterReducer to manage the state of the counter.
-
-```diff
-// src/app/reducers/index.ts
-
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
-} from '@ngrx/store';
-import { environment } from '../../environments/environment';
-+ import { counterReducer } from '../counter.reducer';
-
-export interface State {
-+  count: number;
-}
-
-export const reducers: ActionReducerMap<State> = {
-+   count: counterReducer
-};
-
-export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? []
-  : [];
-
-
-```
-
-<div style="page-break-after: always;"></div>
-
-#### Component
-
-```shell
-ng generate component my-counter --spec=false
-```
-
-Update the `MyCounterComponent` class with a selector for the `count`, and methods to dispatch the Increment, Decrement, and Reset actions.
-
-Then, update the `MyCounterComponent` template with buttons to call the increment, decrement, and reset methods. Use the async pipe to subscribe to the count\$ observable.
-
-```diff
-// src/app/my-counter/my-counter.component.ts
-
-import { Component } from '@angular/core';
-+ import { Store, select } from '@ngrx/store';
-+ import { Observable } from 'rxjs';
-+ import { Increment, Decrement, Reset } from '../counter.actions';
-
-@Component({
-  selector: 'app-my-counter',
-   template: `
-+   <div>Current Count: {{ count$ | async }}</div>
-+
-+   <button (click)="increment()">Increment</button>
-+
-+   <button (click)="decrement()">Decrement</button>
-+
-+   <button (click)="reset()">Reset Counter</button>
-  `,
-  styleUrls: ['./my-counter.component.css'],
-})
-export class MyCounterComponent {
-+  count$: Observable<number>;
-+  ngOnInit(): void {}
-+  constructor(private store: Store<{ count: number }>) {
-+    this.count$ = store.pipe(select('count'));
-+  }
-
-+  increment() {
-+    this.store.dispatch(new Increment());
-+  }
-
-+  decrement() {
-+    this.store.dispatch(new Decrement());
-+  }
-
-+  reset() {
-+    this.store.dispatch(new Reset());
-+  }
-}
-```
-
-Add the `MyCounter` component to your `AppComponent` template. Delete the default generated html content.
-
-```diff
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  template: `
-+    <app-my-counter></app-my-counter>
-  `,
-  styles: []
-})
-export class AppComponent {}
-```
-
-If not already running start the application with the following command
-
-```shell
-ng serve -o
-```
-
-Open `Chrome DevTools` and demonstrate the time traveling, record replay, and logging features of the `Redux DevTools` extension.
-
-> Directions on installing this extension included as part of the setup document for the class.
-
-Finished code available in `demos\ngrx-counter`.
-
 <div style="page-break-after: always;"></div>
 
 ### NgRx Lab
 
 #### Setup
 
-1. **Copy** the folder `\code\labs\lab29\complete\project-manage` into your `working` directory.
-2. In the `working\project-manage` directory run the command `npm install`.
+1. This lab is designed to be done starting with the completed code from `lab31`. If your code is at that point then continue to the next step. If your code is not at that point, then **checkout** the branch `lab31` as detailed in the steps below.
+
+   ```
+   # open a powershell or terminal window
+   # cd into your `working` directory where you are coding in this class
+   git clone https://github.com/craigmckeachie/a14_labs project-manage
+   cd project-manage
+   npm install
+   # open `project-manage` in VS Code
+   # open a powershell or terminal window and `cd` to `project-manage`
+   ng serve -o
+   # Optional: name this terminal window `web`
+   # open another (new) powershell or terminal window and `cd` to `project-manage`
+   npm run api
+   # Optional: name this terminal window `api`
+   ```
 
 #### Installation
 
