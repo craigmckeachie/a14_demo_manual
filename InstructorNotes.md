@@ -4,7 +4,7 @@
 
 ### Setup
 
-- [Computer Setup](https://github.com/craigmckeachie/a12_setup/blob/main/readme.md) directions are available online
+- [Computer Setup](https://github.com/craigmckeachie/a14_setup/blob/main/readme.md) directions are available online
 
 ### Concepts
 
@@ -15,7 +15,7 @@
 
 ### Demos
 
-- [Finished code](https://github.com/craigmckeachie/a12_demos) for each demo is available online in a public GitHub repository.
+- [Finished code](https://github.com/craigmckeachie/a14_demos) for each demo is available online in a public GitHub repository.
   - Each demo is a branch
   - See the demo manual for more details on how to access and run the demos
 - [Demo Manual](./AngularDemosManual.md) with step-by-step directions for live coding the demos is available online
@@ -29,7 +29,7 @@
 - Building an application one step at a time
 - Hands-on for attendees
 - Step-by-step directions are provided in a pdf lab manual
-- [Solution code](https://github.com/craigmckeachie/a12-labs) for each lab is available online in a public GitHub repository
+- [Solution code](https://github.com/craigmckeachie/a14_labs) for each lab is available online in a public GitHub repository
   - Each lab is a separate branch
   - See the lab manual for more details on how to access and run the demos
 - If you miss lab or don’t finish a lab, you can pickup on the next one
@@ -65,7 +65,7 @@
 
 ## Errata
 
-Click this link [Angular version 12 Courseware Errata](https://gist.github.com/craigmckeachie/3b936cea437656d5b205992337ee2e2f) to see a current known list of issues with this version of the coursware.
+Click this link [Angular version 14 Courseware Errata](https://gist.github.com/craigmckeachie/3b936cea437656d5b205992337ee2e2f) to see a current known list of issues with this version of the coursware.
 
 ## Feedback
 
