@@ -99,13 +99,6 @@ information storage and retrieval systems, without permission from the author.
       - [Actions](#actions)
       - [Reducer](#reducer)
       - [User Interface](#user-interface)
-    - [LEGACY: Redux (NgRx) Counter](#legacy-redux-ngrx-counter)
-      - [Setup](#setup-1)
-      - [Installation](#installation-1)
-      - [Store](#store-1)
-      - [Actions](#actions-1)
-      - [Reducer](#reducer-1)
-      - [Component](#component)
     - [NgRx Lab](#ngrx-lab)
       - [Setup](#setup-2)
       - [Installation](#installation-2)
@@ -2934,6 +2927,7 @@ Finished code available in `demos\ngrx-counter1`.
    # cd into your `working` directory where you are coding in this class
    git clone https://github.com/craigmckeachie/a14_labs project-manage
    cd project-manage
+   git checkout lab31
    npm install
    # open `project-manage` in VS Code
    # open a powershell or terminal window and `cd` to `project-manage`
