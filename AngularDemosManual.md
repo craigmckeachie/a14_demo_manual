@@ -2943,7 +2943,7 @@ Finished code available in `demos\ngrx-counter1`.
 1. **Install** `@ngrx/schematics` from npm:
 
    ```
-   ng add @ngrx/schematics
+   ng add @ngrx/schematics@next
    ```
 
 1. This will ask you if you want to make the `@ngrx/schematics` the **default** **collection** in your Angular CLI project. **Choose** `n` for **no** in this lab.
@@ -2951,9 +2951,9 @@ Finished code available in `demos\ngrx-counter1`.
 1. After installing @ngrx/schematics, **install** the NgRx **following** **library** dependencies.
 
    ```
-   ng add @ngrx/store
-   ng add @ngrx/store-devtools
-   ng add @ngrx/effects
+   ng add @ngrx/store@next
+   ng add @ngrx/store-devtools@next
+   ng add @ngrx/effects@next
    ```
 
 1. Generate the initial state management and register it within the app.module.ts
