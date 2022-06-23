@@ -2927,7 +2927,7 @@ Finished code available in `demos\ngrx-counter1`.
    # cd into your `working` directory where you are coding in this class
    git clone https://github.com/craigmckeachie/a14_labs project-manage
    cd project-manage
-   git checkout lab31
+   git checkout lab29
    npm install
    # open `project-manage` in VS Code
    # open a powershell or terminal window and `cd` to `project-manage`
@@ -2950,11 +2950,15 @@ Finished code available in `demos\ngrx-counter1`.
 
 1. After installing @ngrx/schematics, **install** the NgRx **following** **library** dependencies.
 
+
+   > After each of these commands you will be asked if you want to install the corresponding package. Answer 'Y' for yes.
+
    ```
    ng add @ngrx/store@next
    ng add @ngrx/store-devtools@next
    ng add @ngrx/effects@next
    ```
+
 
 1. Generate the initial state management and register it within the app.module.ts
 
