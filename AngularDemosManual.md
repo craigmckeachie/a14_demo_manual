@@ -2698,11 +2698,9 @@ https://ngrx.io/
 
 1. After installing @ngrx/schematics, install the NgRx dependencies.
 
-   > WARNING: ngrx for Angular 14 has not been released so need to temporarily add @next to the following commands
-
    ```
-   ng add @ngrx/store@next
-   ng add @ngrx/store-devtools@next
+   ng add @ngrx/store
+   ng add @ngrx/store-devtools
    ```
 
    In more complex applications, you may also want to install the follow NgRx libraries but there is no need to run the below commands in this example.
@@ -2943,22 +2941,20 @@ Finished code available in `demos\ngrx-counter1`.
 1. **Install** `@ngrx/schematics` from npm:
 
    ```
-   ng add @ngrx/schematics@next
+   ng add @ngrx/schematics
    ```
 
 1. This will ask you if you want to make the `@ngrx/schematics` the **default** **collection** in your Angular CLI project. **Choose** `n` for **no** in this lab.
 
 1. After installing @ngrx/schematics, **install** the NgRx **following** **library** dependencies.
 
-
    > After each of these commands you will be asked if you want to install the corresponding package. Answer 'Y' for yes.
 
    ```
-   ng add @ngrx/store@next
-   ng add @ngrx/store-devtools@next
-   ng add @ngrx/effects@next
+   ng add @ngrx/store
+   ng add @ngrx/store-devtools
+   ng add @ngrx/effects
    ```
-
 
 1. Generate the initial state management and register it within the app.module.ts
 
