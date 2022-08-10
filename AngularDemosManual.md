@@ -2918,7 +2918,7 @@ Finished code available in `demos\ngrx-counter1`.
 
 #### Setup
 
-1. This lab is designed to be done starting with the completed code from `lab31`. If your code is at that point then continue to the next step. If your code is not at that point, then **checkout** the branch `lab31` as detailed in the steps below.
+1. This lab is designed to be done starting with the completed code from `lab29`. If your code is at that point then continue to the next step. If your code is not at that point, then **checkout** the branch `lab29` as detailed in the steps below.
 
    ```
    # open a powershell or terminal window
