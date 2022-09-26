@@ -33,8 +33,10 @@
   - Each lab is a separate branch
   - See the lab manual for more details on how to access and run the demos
 - If you miss lab or don’t finish a lab, you can pickup on the next one
+- The pdfs are not ideal for students to copy and paste code from them. So code snippets are provided in this repository...[code snippets](https://github.com/craigmckeachie/a14_labs_snippets).
 
 ### Challenges
+
 - If students are finishing labs before other students and waiting or are requesting labs without as much direction you can point them to the `AngularChallengeManual.pdf`.
 
 ## Files
@@ -63,7 +65,7 @@
   - AngularLabManualAdvanced.pdf
     > TypeScript content is included/bundled for free with the purchase of Comprehensive Angular courseware
   - AngularChallengeManual.pdf
-  > Note: I just give Instructors and students both the advanced AND intro pdfs for an advanced class and let them decide where in the materials they want to start. 
+    > Note: I just give Instructors and students both the advanced AND intro pdfs for an advanced class and let them decide where in the materials they want to start.
 
 ## Errata
 
